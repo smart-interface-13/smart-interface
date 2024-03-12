@@ -50,6 +50,6 @@ class ModelTrainer(object):
         print(f"Test loss:{loss}, Test accuracy:{acc}")
         return loss, acc
 
-    def optimize_model(model):
+    def optimize_model(self, model):
         model.export_model()
         files.download('exported_model/gesture_recognizer.task')
