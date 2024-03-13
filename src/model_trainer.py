@@ -2,7 +2,7 @@
 from MediaPipe with custom data
 """
 
-from google.colab import files
+#from google.colab import files
 import os
 import tensorflow as tf
 assert tf.__version__.startswith('2')
@@ -13,23 +13,38 @@ import matplotlib.pyplot as plt
 
 import neptune
 
+train_path = "src\dataset\Train"
+test_path = "src\dataset\Test"
+trainer = ModelTrainer(train_path, test_path)
+
 class ModelTrainer(object):
 
-    def __init__(self, dataset_path : str) -> None:
+    def __init__(self, dataset_path : str, test_path: str) -> None:
         """Inits the ModelTrainer class
 
         Args:
             dataset_path (str): Path of the folder with custom images
         """
         self.dataset_path = dataset_path
+        self.test_path= test_path
 
     def prepare_data(self):
-        data = gesture_recognizer.Dataset.from_folder(
-        dirname=self.dataset_path,
-            hparams=gesture_recognizer.HandDataPreprocessingParams()
+        #data = gesture_recognizer.Dataset.from_folder(
+        #dirname=self.dataset_path,
+            #hparams=gesture_recognizer.HandDataPreprocessingParams()
+        #)
+        train_data = gesture_recognizer.Dataset.from_folder(
+        dirname=self.train_path,
+        hparams=gesture_recognizer.HandDataPreprocessingParams()
         )
-        train_data, rest_data = data.split(0.8)
-        validation_data, test_data = rest_data.split(0.5)
+        test_data = gesture_recognizer.Dataset.from_folder(
+        dirname=self.train_path,
+        hparams=gesture_recognizer.HandDataPreprocessingParams()
+        )
+        #train_data, rest_data = data.split(0.8)
+        
+        #validation_data, test_data = rest_data.split(0.5)
+        validation_data=None
         return train_data, test_data, validation_data
     
     def train_model(self, train_data, validation_data, run):
