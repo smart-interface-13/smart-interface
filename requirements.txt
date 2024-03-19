@@ -1,4 +1,4 @@
-mediapipe==0.10.11
+mediapipe==0.10.9
 opencv-python==4.9.0.80
 python-docx==1.1.0
 PyAutoGUI==0.9.54

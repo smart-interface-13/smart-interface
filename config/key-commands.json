@@ -1,0 +1,21 @@
+{
+    "Windows" : [],
+    "MacOS" : {
+            "Pages" : {
+                "open_document" : {
+                    "action" : "open_document",
+                    "triggers" : ["open_document", "abrir documento"],
+                    "trigger_types" : ["gesture", "voice"],
+                    "description" : "This command opens a Pages document",
+                    "sequence" : {
+                        "1press" : "a",
+                        "2hotkey" : ["command", "space"],
+                        "3typewrite" : "nuitest",
+                        "4press" : "enter"
+                    }
+                },
+                "close_document" : {}
+            },
+            "KeyNote" : []
+    }
+}

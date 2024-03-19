@@ -29,6 +29,6 @@ class AudioTranscriber(object):
                 if result.get('text') :
                     print("Texto transrito:", result['text'])
 
-voice = AudioTranscriber(model_path)
-stream = voice.open_channel()
-voice.capture_voice(stream)
+#voice = AudioTranscriber(model_path)
+#stream = voice.open_channel()
+#voice.capture_voice(stream)
