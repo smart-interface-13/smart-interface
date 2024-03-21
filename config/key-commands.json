@@ -1,21 +1,163 @@
 {
-    "Windows" : [],
-    "MacOS" : {
-            "Pages" : {
-                "open_document" : {
-                    "action" : "open_document",
-                    "triggers" : ["open_document", "abrir documento"],
-                    "trigger_types" : ["gesture", "voice"],
-                    "description" : "This command opens a Pages document",
-                    "sequence" : {
-                        "1press" : "a",
-                        "2hotkey" : ["command", "space"],
-                        "3typewrite" : "nuitest",
-                        "4press" : "enter"
-                    }
-                },
-                "close_document" : {}
+    "text_processor" : {
+        "open_document" : {
+            "action" : "open_document",
+            "triggers" : ["open_document", "abrir documento"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command opens a Pages document",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "a",
+                "2hotkey" : ["command", "space"],
+                "3typewrite" : "nuitest",
+                "4press" : "enter"
             },
-            "KeyNote" : []
+            "sequence_windows" : {}
+        },
+        "save_document" : {
+            "action" : "save_document",
+            "triggers" : ["save_document", "guardar documento"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command saves a document",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1hotkey" : ["command", "s"]
+            },
+            "sequence_windows" : {}
+        },
+        "copy_text" : {
+            "action" : "copy",
+            "triggers" : ["copy", "copiar"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command copies a text",
+            "prerequisite" : "selected",
+            "sequence_macos" : {
+                "1hotkey" : ["command", "c"]
+            },
+            "sequence_windows" : {}
+        },
+        "paste_text" : {
+            "action" : "paste",
+            "triggers" : ["paste", "pegar"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command pastes a text",
+            "prerequisite" : "copy",
+            "sequence_macos" : {
+                "1hotkey" : ["command", "v"]
+            },
+            "sequence_windows" : {}
+        },
+        "change_size_plus" : {
+            "action" : "change_size_plus",
+            "triggers" : ["change_size_plus", "cambiar tamaño mas"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command alters the size of a text to increase it",
+            "prerequisite" : "selected",
+            "sequence_macos" : {
+                "1hotkey" : ["command", "+"]
+            },
+            "sequence_windows" : {}
+        },
+        "change_size_minus" : {
+            "action" : "change_size_minus",
+            "triggers" : ["change_size_minus", "cambiar tamaño menos"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command alters the size of a text to decrease it",
+            "prerequisite" : "selected",
+            "sequence_macos" : {
+                "1hotkey" : ["command", "-"]
+            },
+            "sequence_windows" : {}
+        },
+        "undo_action" : {
+            "action" : "undo_action",
+            "triggers" : ["undo_action", "cancelar"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command cancels the last action",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1hotkey" : ["command", "z"]
+            },
+            "sequence_windows" : {}
+        },
+        "delete_text" : {
+            "action" : "delete_text",
+            "triggers" : ["delete_text", "borrar"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command deletes the selected text",
+            "prerequisite" : "selected",
+            "sequence_macos" : {
+                "1press" : "backspace"
+            },
+            "sequence_windows" : {}
+        },
+        "write" : {
+            "action" : "write",
+            "triggers" : ["write", "escribir"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command helps on writing a text",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1typewrite" : ""
+            },
+            "sequence_windows" : {}
+        },
+        "select" : {
+            "action" : "select",
+            "triggers" : ["select", "seleccionar"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command selects text",
+            "prerequisite" : "selected",
+            "sequence_macos" : {
+                "1hotkey" : ["command", "a"]
+            },
+            "sequence_windows" : {}
+        }
+    },
+    "slides_processor" : {
+        "advance_slide" : {
+            "action" : "advance_slide",
+            "triggers" : ["", "siguiente"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command triggers moving to the next slide",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "pageup"
+            },
+            "sequence_windows" : {}
+        },
+        "return_slide" : {
+            "action" : "return_slide",
+            "triggers" : ["", "anterior"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command triggers moving to the last slide",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "pagedown"
+            },
+            "sequence_windows" : {}
+        },
+        "play_slide" : {
+            "action" : "play_slide",
+            "triggers" : ["", "iniciar"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command starts the slide presentation",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1hotkey" : ["option","command","p"]
+            },
+            "sequence_windows" : {}
+        },
+        "stop_presentation" : {
+            "action" : "stop_presentation",
+            "triggers" : ["", "salir"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command finishes the slide presentation",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "esc"
+            },
+            "sequence_windows" : {}
+        }
     }
 }
