@@ -2,6 +2,8 @@
 """
 
 from abc import ABC, abstractmethod
+import pyautogui
+import time
     
 def singleton(cls):
     instances = {}
@@ -35,17 +37,11 @@ class SoftwareActionPicker(ABC):
 @singleton
 class WordActionPicker(SoftwareActionPicker):
 
-    def __init__(self, type: str) -> None:
+    def __init__(self, type: str, gesture_actions_map : dict, voice_command_actions_map : dict) -> None:
         super().__init__(type)
-        self.gesture_actions_map = {
-            "Gesture1" : "Action1",
-            "Gesture2" : "Action2",
-        }
-        self.voice_command_actions_map = {
-            "Voice1" : "Action3",
-            "Voice2" : "Action4",
-        }
-
+        self.gesture_actions_map = gesture_actions_map
+        self.voice_command_actions_map = voice_command_actions_map
+        
     def map_input_to_action(self, input: str, type : str) -> str:
         action = ""
         if type == "gesture":
@@ -56,8 +52,20 @@ class WordActionPicker(SoftwareActionPicker):
             raise Exception("Type of input not supported. Check supported types: 'gesture' and 'voice'")
         return action
     
-    def execute_action(self, action: str) -> None:
-        pass
+    def get_action_sequence(self, action : str, actions : dict, tool : str, ops : str) -> dict:
+        tool_actions = actions[tool]
+        seq_type = "sequence_" + ops
+        return tool_actions[action][seq_type]
+
+    def execute_action(self, action_sequence : dict, text : str = "") -> None:
+        for step, keys in action_sequence.items():
+            if step[1:] == "press":
+                pyautogui.press(keys)
+            elif step[1:] == "hotkey":
+                pyautogui.hotkey(keys)
+            elif  step[1:] == "typewrite":
+                pyautogui.typewrite(text)
+            time.sleep(0.1)
 
 @singleton
 class PowerPointActionPicker(SoftwareActionPicker):
