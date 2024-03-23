@@ -49,7 +49,7 @@
         },
         "change_size_plus" : {
             "action" : "change_size_plus",
-            "triggers" : ["change_size_plus", "cambiar tamaño mas"],
+            "triggers" : ["change_size_plus", "aumentar tamaño"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command alters the size of a text to increase it",
             "prerequisite" : "selected",
@@ -60,7 +60,7 @@
         },
         "change_size_minus" : {
             "action" : "change_size_minus",
-            "triggers" : ["change_size_minus", "cambiar tamaño menos"],
+            "triggers" : ["change_size_minus", "disminuir tamaño"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command alters the size of a text to decrease it",
             "prerequisite" : "selected",
@@ -98,7 +98,7 @@
             "description" : "This command helps on writing a text",
             "prerequisite" : "",
             "sequence_macos" : {
-                "1typewrite" : ""
+                "1hotkey" : ["command","r"]
             },
             "sequence_windows" : {}
         },
@@ -110,6 +110,17 @@
             "prerequisite" : "selected",
             "sequence_macos" : {
                 "1hotkey" : ["command", "a"]
+            },
+            "sequence_windows" : {}
+        },
+        "deselect" : {
+            "action" : "deselect",
+            "triggers" : ["deselect", "cancelar selección"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command selects text",
+            "prerequisite" : "selected",
+            "sequence_macos" : {
+                "1hotkey" : ["command", "."]
             },
             "sequence_windows" : {}
         }

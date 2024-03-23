@@ -45,9 +45,15 @@ class WordActionPicker(SoftwareActionPicker):
     def map_input_to_action(self, input: str, type : str) -> str:
         action = ""
         if type == "gesture":
-            action = self.gesture_actions_map[input]
+            try:
+                action = self.gesture_actions_map[input]
+            except KeyError as e:
+                print("Gesto no reconocido")
         elif type == "voice":
-            action = self.voice_command_actions_map[input]
+            try:
+                action = self.voice_command_actions_map[input]
+            except KeyError as e:
+                print("Comando de voz no reconocido")
         else:
             raise Exception("Type of input not supported. Check supported types: 'gesture' and 'voice'")
         return action
@@ -55,16 +61,24 @@ class WordActionPicker(SoftwareActionPicker):
     def get_action_sequence(self, action : str, actions : dict, tool : str, ops : str) -> dict:
         tool_actions = actions[tool]
         seq_type = "sequence_" + ops
-        return tool_actions[action][seq_type]
+        try:
+            sequence = tool_actions[action][seq_type]
+        except:
+            sequence = {}
+        return sequence
 
     def execute_action(self, action_sequence : dict, text : str = "") -> None:
         for step, keys in action_sequence.items():
+            print(step[1:], keys)
             if step[1:] == "press":
                 pyautogui.press(keys)
             elif step[1:] == "hotkey":
                 pyautogui.hotkey(keys)
             elif  step[1:] == "typewrite":
-                pyautogui.typewrite(text)
+                if len(keys) > 0:
+                    pyautogui.typewrite(keys)
+                else:
+                    pyautogui.typewrite(text)
             time.sleep(0.1)
 
 @singleton
@@ -100,6 +114,7 @@ class PowerPointActionPicker(SoftwareActionPicker):
     def execute_action(self, action: str) -> None:
         pass
 
+"""
 software_open = "Word"
 if software_open == "Word":
     action_picker = WordActionPicker(type = software_open.lower())
@@ -117,4 +132,4 @@ print(f"The action taken for gesture : {gesture} of type {input_type} is {action
 if id(action_picker) == id(action_picker2):
     print("Word is aplying Singleton")
 else:
-    print("No successful singleton")
+    print("No successful singleton")"""

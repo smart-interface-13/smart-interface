@@ -5,9 +5,12 @@ import sys
 class ActionDictBuilder(object):
 
     def __init__(self, path : list) -> None:
-        full_path = os.join(*path)
+        full_path = os.path.join(*path)
         with open(full_path) as file:
             self.actions_dict = json.load(file)
+
+    def get_actions(self) -> dict:
+        return self.actions_dict
 
     def get_gesture_action_map(self, tool : str, type : int) -> dict:
         gesture_action = dict()
