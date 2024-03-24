@@ -12,7 +12,11 @@
                 "3typewrite" : "nuitest",
                 "4press" : "enter"
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1press" : "win",
+                "2typewrite" : "nuitest",
+                "3press" : "enter"
+            }
         },
         "save_document" : {
             "action" : "save_document",
@@ -23,7 +27,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command", "s"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1hotkey" : ["ctrl", "g"]
+            }
         },
         "copy_text" : {
             "action" : "copy",
@@ -34,7 +40,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command", "c"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1hotkey" : ["ctrl", "c"]
+            }
         },
         "paste_text" : {
             "action" : "paste",
@@ -45,7 +53,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command", "v"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1hotkey" : ["ctrl", "v"]
+            }
         },
         "change_size_plus" : {
             "action" : "change_size_plus",
@@ -56,7 +66,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command", "+"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1hotkey" : ["ctrl", "capslock", ">"]
+            }
         },
         "change_size_minus" : {
             "action" : "change_size_minus",
@@ -67,7 +79,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command", "-"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1hotkey" : ["ctrl", "capslock", "<"]
+            }
         },
         "undo_action" : {
             "action" : "undo_action",
@@ -78,7 +92,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command", "z"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1hotkey" : ["ctrl", "z"]
+            }
         },
         "delete_text" : {
             "action" : "delete_text",
@@ -89,7 +105,9 @@
             "sequence_macos" : {
                 "1press" : "backspace"
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1press" : "backspace"
+            }
         },
         "write" : {
             "action" : "write",
@@ -100,7 +118,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command","r"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1hotkey" : ["alt", "`"]
+            }
         },
         "select" : {
             "action" : "select",
@@ -135,7 +155,9 @@
             "sequence_macos" : {
                 "1press" : "pageup"
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1press" : "right"
+            }
         },
         "return_slide" : {
             "action" : "return_slide",
@@ -146,7 +168,9 @@
             "sequence_macos" : {
                 "1press" : "pagedown"
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1press" : "left"
+            }
         },
         "play_slide" : {
             "action" : "play_slide",
@@ -157,7 +181,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["option","command","p"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1press" : "f5"
+            }
         },
         "stop_presentation" : {
             "action" : "stop_presentation",
@@ -168,7 +194,9 @@
             "sequence_macos" : {
                 "1press" : "esc"
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1press" : "esc"
+            }
         }
     }
 }
