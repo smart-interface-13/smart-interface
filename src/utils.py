@@ -12,11 +12,12 @@ class ActionDictBuilder(object):
     def get_actions(self) -> dict:
         return self.actions_dict
 
-    def get_gesture_action_map(self, tool : str, type : int) -> dict:
+    def get_gesture_action_map(self, tools : list, type : int) -> dict:
         gesture_action = dict()
-        for action,value in self.actions_dict[tool].items():
-            gesture = value["triggers"][type]
-            gesture_action[gesture] = action
+        for tool in tools:
+            for action,value in self.actions_dict[tool].items():
+                gesture = value["triggers"][type]
+                gesture_action[gesture] = action
         return gesture_action
     
     def get_operative_system(self) -> str:

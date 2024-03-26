@@ -9,6 +9,7 @@ from src.utils import ActionDictBuilder
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import os
+import keyboard
 import pyautogui
 import time
 import json
@@ -19,10 +20,10 @@ actions_path = ["config", "key-commands.json"]
 adb = ActionDictBuilder(actions_path)
 ops = adb.get_operative_system()
 actions = adb.get_actions()
-gesture_action_map_text = adb.get_gesture_action_map(tool="text_processor", type=0)
-voice_action_map_text = adb.get_gesture_action_map(tool="text_processor", type=1)
-gesture_action_map_slides = adb.get_gesture_action_map(tool="slides_processor", type=0)
-voice_action_map_slides = adb.get_gesture_action_map(tool="slides_processor", type=1)
+gesture_action_map = adb.get_gesture_action_map(tools=["text_processor", "slides_processor"], type=0)
+voice_action_map = adb.get_gesture_action_map(tools=["text_processor", "slides_processor"], type=1)
+
+print(voice_action_map)
 
 # Initialization of models
 base_options = python.BaseOptions(model_asset_path=os.path.join(os.getcwd(),"models", "gesture_recognizer.task"))
@@ -31,28 +32,23 @@ gesture_recognizer = vision.GestureRecognizer.create_from_options(options)
 audio_model_path = os.path.join(os.getcwd(), "models", "vosk-model-es-0.42")
 
 
-wap = WordActionPicker(type="text", gesture_actions_map=gesture_action_map_text, 
-                        voice_command_actions_map=voice_action_map_text)
+wap = WordActionPicker(type="text", gesture_actions_map=gesture_action_map, 
+                        voice_command_actions_map=voice_action_map)
 
 voice_recognizer = AudioTranscriber(audio_model_path, action_picker_text=wap, action_picker_slides=None)
 stream = voice_recognizer.open_channel()
 
-if __name__ == "__main__":
-    history = []
-    voice_recognizer.capture_voice(actions=actions, tool="text_processor", ops=ops)
-    # We initialize the camera and keep capturing image during the program execution
-    #cap = cv2.VideoCapture(0)
-    #while cap.isOpened():
-    #    ret, frame = cap.read()
-    #    if not ret:
-    #        break
-        # Here lies all the business logic
-        #video_capturer = VideoCapturer(recognizer=gesture_recognizer, history=history)
-        #gesture = video_capturer.get_gesture(frame)
-        
+video_capturer = VideoCapturer(recognizer=gesture_recognizer, action_picker=wap)
 
-        # Display the frame
-    #    cv2.imshow('Webcam', frame)
-    #    if cv2.waitKey(1) != -1:
-    #        break
+if __name__ == "__main__":
+    # Here lies all the business logic
+    while True:
+        gm = voice_recognizer.capture_voice(actions=actions, tool="text_processor", ops=ops)
+        if gm == "exit":
+            break
+        gm = video_capturer.get_gesture(actions=actions, tool="text_processor", ops=ops)
+        if gm == "exit":
+            break
+        
+        
     

@@ -1,5 +1,27 @@
 {
     "text_processor" : {
+        "exit" : {
+            "action" : "exit_mode",
+            "triggers" : ["Victory", "cambiar modo"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command closes the current input method",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1close" : ""
+            },
+            "sequence_windows" : {}
+        },
+        "exit_program" : {
+            "action" : "exit_program",
+            "triggers" : ["Closed_Fist", "cerrar programa"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command closes the software",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1exit" : ""
+            },
+            "sequence_windows" : {}
+        },
         "open_document" : {
             "action" : "open_document",
             "triggers" : ["open_document", "abrir documento"],
@@ -123,12 +145,84 @@
                 "1hotkey" : ["command", "."]
             },
             "sequence_windows" : {}
+        },
+        "open_presentation" : {
+            "action" : "open_presentation",
+            "triggers" : ["open_presentation", "abrir presentación"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command opens a KeyNote or PowerPoint document",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "a",
+                "2hotkey" : ["command", "space"],
+                "3typewrite" : "nuitestslides",
+                "4press" : "enter"
+            },
+            "sequence_windows" : {}
+        },
+        "advance_slide" : {
+            "action" : "advance_slide",
+            "triggers" : ["Thumb_Down", "siguiente"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command triggers moving to the next slide",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "pagedown"
+            },
+            "sequence_windows" : {}
+        },
+        "return_slide" : {
+            "action" : "return_slide",
+            "triggers" : ["", "anterior"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command triggers moving to the last slide",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "pageup"
+            },
+            "sequence_windows" : {}
+        },
+        "play_slide" : {
+            "action" : "play_slide",
+            "triggers" : ["", "iniciar"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command starts the slide presentation",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1hotkey" : ["optionleft","command","p"]
+            },
+            "sequence_windows" : {}
+        },
+        "stop_presentation" : {
+            "action" : "stop_presentation",
+            "triggers" : ["", "salir"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command finishes the slide presentation",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "esc"
+            },
+            "sequence_windows" : {}
         }
     },
     "slides_processor" : {
+        "open_presentation" : {
+            "action" : "open_presentation",
+            "triggers" : ["open_presentation", "abrir presentación"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command opens a KeyNote or PowerPoint document",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "a",
+                "2hotkey" : ["command", "space"],
+                "3typewrite" : "nuitestslides",
+                "4press" : "enter"
+            },
+            "sequence_windows" : {}
+        },
         "advance_slide" : {
             "action" : "advance_slide",
-            "triggers" : ["", "siguiente"],
+            "triggers" : ["Thumb_Down", "siguiente"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command triggers moving to the next slide",
             "prerequisite" : "",
@@ -139,7 +233,7 @@
         },
         "return_slide" : {
             "action" : "return_slide",
-            "triggers" : ["", "anterior"],
+            "triggers" : ["Thumb_Up", "anterior"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command triggers moving to the last slide",
             "prerequisite" : "",
