@@ -5,15 +5,23 @@ import json
 #model_path = "vosk-model-es-0.42"
 
 class AudioTranscriber(object):
+    """This class manages the microphone to process audio
+    """
 
-    def __init__(self, model_path : str, action_picker_text, 
-                 action_picker_slides) -> None:
+    def __init__(self, model_path : str, action_picker_text) -> None:
+        """Inits the class
+
+        Args:
+            model_path (str): Path of the vosk model to use for STT
+            action_picker_text (_type_): The picker of actions to map in the software
+        """
         self.model = Model(model_path)
         self.recognizer = KaldiRecognizer(self.model, 16000)
-        self.action_picker_text = action_picker_text
-        self.action_picker_slides = action_picker_slides
+        self.action_picker = action_picker_text
 
     def open_channel(self):
+        """Opens the audio channel to receive the data
+        """
         cap = pyaudio.PyAudio()
         stream = cap.open(format=pyaudio.paInt16, 
                         channels=1, 
@@ -23,7 +31,16 @@ class AudioTranscriber(object):
         stream.start_stream()
         return stream
     
-    def capture_voice(self, actions : dict, tool : str, ops : str):
+    def capture_voice(self, actions : dict, tool : str, ops : str) -> str:
+        """Captures the voice command and gets the action to trigger in the software
+        Args:
+            actions (dict): Supported actions by command
+            tool (str): The current tool (text or slides)
+            ops (str): Operative system
+
+        Returns:
+            str: a control message
+        """
         cap = pyaudio.PyAudio()
         stream = cap.open(format=pyaudio.paInt16, 
                         channels=1, 
@@ -38,18 +55,27 @@ class AudioTranscriber(object):
             if self.recognizer.AcceptWaveform(data):
                 result = json.loads(self.recognizer.Result())
                 action = self._get_text_from_audio(result)
-                action = self.action_picker_text.map_input_to_action(action, "voice")
-                action_sequence = self.action_picker_text.get_action_sequence(action=action,
-                                                                              actions=actions,
-                                                                              tool=tool,
-                                                                              ops=ops)
-                self.action_picker_text.execute_action(action_sequence)
+                action = self.action_picker.map_input_to_action(action, "voice")
+                action_sequence = self.action_picker.get_action_sequence(action=action,
+                                                                            actions=actions,
+                                                                            tool=tool,
+                                                                            ops=ops)
+                out = self.action_picker.execute_action(action_sequence)
+                if out == "close":
+                    print("Saliendo de modo comandos de voz")
+                    return "gesture_mode"
+                elif out == "exit":
+                    return out
                 
     def _get_text_from_audio(self, result) -> str:
+        """Gets the transcription of the audio
+
+        Args:
+            result (_type_): Audio
+
+        Returns:
+            str: Transcription
+        """
         if result.get('text') :
             print("Texto transrito:", result['text'])
         return result["text"]
-
-#voice = AudioTranscriber(model_path)
-#stream = voice.open_channel()
-#voice.capture_voice(stream)

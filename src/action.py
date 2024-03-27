@@ -52,6 +52,7 @@ class WordActionPicker(SoftwareActionPicker):
         elif type == "voice":
             try:
                 action = self.voice_command_actions_map[input]
+                print(f"Comando de voz reconocido {action}")
             except KeyError as e:
                 print("Comando de voz no reconocido")
         else:
@@ -74,26 +75,24 @@ class WordActionPicker(SoftwareActionPicker):
                 pyautogui.press(keys)
             elif step[1:] == "hotkey":
                 pyautogui.hotkey(keys)
-            elif  step[1:] == "typewrite":
+            elif step[1:] == "typewrite":
                 if len(keys) > 0:
                     pyautogui.typewrite(keys)
                 else:
                     pyautogui.typewrite(text)
+            elif step[1:] == "close":
+                return "close"
+            elif step[1:] == "exit":
+                return "exit"
             time.sleep(0.1)
 
 @singleton
 class PowerPointActionPicker(SoftwareActionPicker):
 
-    def __init__(self, type: str) -> None:
+    def __init__(self, type: str, gesture_actions_map : dict, voice_command_actions_map : dict) -> None:
         super().__init__(type)
-        self.gesture_actions_map = {
-            "Gesture1" : "Action10",
-            "Gesture2" : "Action20",
-        }
-        self.voice_command_actions_map = {
-            "Voice1" : "Action30",
-            "Voice2" : "Action40",
-        }
+        self.gesture_actions_map = gesture_actions_map
+        self.voice_command_actions_map = voice_command_actions_map
 
     def map_input_to_action(self, input: str, type : str) -> str:
         action = ""
@@ -101,18 +100,29 @@ class PowerPointActionPicker(SoftwareActionPicker):
             try:
                 action = self.gesture_actions_map[input]
             except KeyError as e:
-                print(e)
+                print("Gesto no reconocido")
         elif type == "voice":
             try:
                 action = self.voice_command_actions_map[input]
             except KeyError as e:
-                print(e)
+                print("Comando de voz no reconocido")
         else:
             raise Exception("Type of input not supported. Check supported types: 'gesture' and 'voice'")
         return action
     
-    def execute_action(self, action: str) -> None:
-        pass
+    def execute_action(self, action_sequence : dict, text : str = "") -> None:
+        for step, keys in action_sequence.items():
+            print(step[1:], keys)
+            if step[1:] == "press":
+                pyautogui.press(keys)
+            elif step[1:] == "hotkey":
+                pyautogui.hotkey(keys)
+            elif  step[1:] == "typewrite":
+                if len(keys) > 0:
+                    pyautogui.typewrite(keys)
+                else:
+                    pyautogui.typewrite(text)
+            time.sleep(0.1)
 
 """
 software_open = "Word"

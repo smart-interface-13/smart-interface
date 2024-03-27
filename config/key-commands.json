@@ -1,5 +1,31 @@
 {
     "text_processor" : {
+        "exit" : {
+            "action" : "exit_mode",
+            "triggers" : ["Victory", "cambiar modo"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command closes the current input method",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1close" : ""
+            },
+            "sequence_windows" : {
+                "1close" : ""
+            }
+        },
+        "exit_program" : {
+            "action" : "exit_program",
+            "triggers" : ["Closed_Fist", "cerrar programa"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command closes the software",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1exit" : ""
+            },
+            "sequence_windows" : {
+                "1exit" : ""
+            }
+        },
         "open_document" : {
             "action" : "open_document",
             "triggers" : ["open_document", "abrir documento"],
@@ -143,17 +169,29 @@
                 "1hotkey" : ["command", "."]
             },
             "sequence_windows" : {}
-        }
-    },
-    "slides_processor" : {
+        },
+        "open_presentation" : {
+            "action" : "open_presentation",
+            "triggers" : ["open_presentation", "abrir presentación"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command opens a KeyNote or PowerPoint document",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : "a",
+                "2hotkey" : ["command", "space"],
+                "3typewrite" : "nuitestslides",
+                "4press" : "enter"
+            },
+            "sequence_windows" : {}
+        },
         "advance_slide" : {
             "action" : "advance_slide",
-            "triggers" : ["", "siguiente"],
+            "triggers" : ["Thumb_Down", "siguiente"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command triggers moving to the next slide",
             "prerequisite" : "",
             "sequence_macos" : {
-                "1press" : "pageup"
+                "1press" : "pagedown"
             },
             "sequence_windows" : {
                 "1press" : "right"
@@ -166,7 +204,7 @@
             "description" : "This command triggers moving to the last slide",
             "prerequisite" : "",
             "sequence_macos" : {
-                "1press" : "pagedown"
+                "1press" : "pageup"
             },
             "sequence_windows" : {
                 "1press" : "left"
@@ -179,7 +217,7 @@
             "description" : "This command starts the slide presentation",
             "prerequisite" : "",
             "sequence_macos" : {
-                "1hotkey" : ["option","command","p"]
+                "1hotkey" : ["optionleft","command","p"]
             },
             "sequence_windows" : {
                 "1press" : "f5"
