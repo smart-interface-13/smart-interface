@@ -157,7 +157,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command", "a"]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1hotkey" : ["ctrl", "e"]
+            }
         },
         "deselect" : {
             "action" : "deselect",
@@ -168,7 +170,9 @@
             "sequence_macos" : {
                 "1hotkey" : ["command", "."]
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1press" : "right"
+            }
         },
         "open_presentation" : {
             "action" : "open_presentation",
@@ -221,6 +225,45 @@
             },
             "sequence_windows" : {
                 "1press" : "f5"
+            }
+        },
+        "current_slide" : {
+            "action" : "current_slide",
+            "triggers" : ["", "actual"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command starts at the actual presentation slide",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1hotkey" : ["", ""]
+            },
+            "sequence_windows" : {
+                "1hotkey" : ["shift", "f5"]
+            }
+        },
+        "white_slide" : {
+            "action" : "white_slide",
+            "triggers" : ["", "blanco"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command sets screen to a blank white slide",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : ""
+            },
+            "sequence_windows" : {
+                "1press" : "w"
+            }
+        },
+        "dark_slide" : {
+            "action" : "dark_slide",
+            "triggers" : ["", "negro"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command sets screen to a blank dark slide",
+            "prerequisite" : "",
+            "sequence_macos" : {
+                "1press" : ""
+            },
+            "sequence_windows" : {
+                "1press" : "b"
             }
         },
         "stop_presentation" : {
