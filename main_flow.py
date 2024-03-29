@@ -20,8 +20,8 @@ actions_path = ["config", "key-commands.json"]
 adb = ActionDictBuilder(actions_path)
 ops = adb.get_operative_system()
 actions = adb.get_actions()
-gesture_action_map = adb.get_gesture_action_map(tools=["text_processor", "slides_processor"], type=0)
-voice_action_map = adb.get_gesture_action_map(tools=["text_processor", "slides_processor"], type=1)
+gesture_action_map = adb.get_gesture_action_map(tools=["text_processor"], type=0)
+voice_action_map = adb.get_gesture_action_map(tools=["text_processor"], type=1)
 
 print(voice_action_map)
 
@@ -31,11 +31,10 @@ options = vision.GestureRecognizerOptions(base_options=base_options)
 gesture_recognizer = vision.GestureRecognizer.create_from_options(options)
 audio_model_path = os.path.join(os.getcwd(), "models", "vosk-model-es-0.42")
 
-
 wap = WordActionPicker(type="text", gesture_actions_map=gesture_action_map, 
                         voice_command_actions_map=voice_action_map)
 
-voice_recognizer = AudioTranscriber(audio_model_path, action_picker_text=wap, action_picker_slides=None)
+voice_recognizer = AudioTranscriber(audio_model_path, action_picker_text=wap)
 stream = voice_recognizer.open_channel()
 
 video_capturer = VideoCapturer(recognizer=gesture_recognizer, action_picker=wap)

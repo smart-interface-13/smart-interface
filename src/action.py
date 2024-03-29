@@ -4,17 +4,9 @@
 from abc import ABC, abstractmethod
 import pyautogui
 import time
-    
-def singleton(cls):
-    instances = {}
-    def get_instance(*args, **kwargs):
-        print(cls)
-        print(instances)
-        if cls not in instances:
-            instances[cls] = cls(*args, **kwargs)
-        return instances[cls]
-    return get_instance
+from src.utils import singleton, GestureLogger
 
+logger = GestureLogger("logger1")
 
 class SoftwareActionPicker(ABC):
 
@@ -48,13 +40,13 @@ class WordActionPicker(SoftwareActionPicker):
             try:
                 action = self.gesture_actions_map[input]
             except KeyError as e:
-                print("Gesto no reconocido")
+                logger.info("Gesto no reconocido")
         elif type == "voice":
             try:
                 action = self.voice_command_actions_map[input]
-                print(f"Comando de voz reconocido {action}")
+                logger.info(f"Comando de voz reconocido {action}")
             except KeyError as e:
-                print("Comando de voz no reconocido")
+                logger.info("Comando de voz no reconocido")
         else:
             raise Exception("Type of input not supported. Check supported types: 'gesture' and 'voice'")
         return action
@@ -70,7 +62,7 @@ class WordActionPicker(SoftwareActionPicker):
 
     def execute_action(self, action_sequence : dict, text : str = "") -> None:
         for step, keys in action_sequence.items():
-            print(step[1:], keys)
+            logger.info(str(step[1:]) + str(keys))
             if step[1:] == "press":
                 pyautogui.press(keys)
             elif step[1:] == "hotkey":
@@ -89,10 +81,11 @@ class WordActionPicker(SoftwareActionPicker):
 @singleton
 class PowerPointActionPicker(SoftwareActionPicker):
 
-    def __init__(self, type: str, gesture_actions_map : dict, voice_command_actions_map : dict) -> None:
+    def __init__(self, type: str, gesture_actions_map : dict, voice_command_actions_map : dict, logger) -> None:
         super().__init__(type)
         self.gesture_actions_map = gesture_actions_map
         self.voice_command_actions_map = voice_command_actions_map
+        logger = logger
 
     def map_input_to_action(self, input: str, type : str) -> str:
         action = ""
@@ -100,19 +93,19 @@ class PowerPointActionPicker(SoftwareActionPicker):
             try:
                 action = self.gesture_actions_map[input]
             except KeyError as e:
-                print("Gesto no reconocido")
+                logger.info("Gesto no reconocido")
         elif type == "voice":
             try:
                 action = self.voice_command_actions_map[input]
             except KeyError as e:
-                print("Comando de voz no reconocido")
+                logger.info("Comando de voz no reconocido")
         else:
             raise Exception("Type of input not supported. Check supported types: 'gesture' and 'voice'")
         return action
     
     def execute_action(self, action_sequence : dict, text : str = "") -> None:
         for step, keys in action_sequence.items():
-            print(step[1:], keys)
+            logger.info(str(step[1:]) + str(keys))
             if step[1:] == "press":
                 pyautogui.press(keys)
             elif step[1:] == "hotkey":
@@ -123,23 +116,3 @@ class PowerPointActionPicker(SoftwareActionPicker):
                 else:
                     pyautogui.typewrite(text)
             time.sleep(0.1)
-
-"""
-software_open = "Word"
-if software_open == "Word":
-    action_picker = WordActionPicker(type = software_open.lower())
-    action_picker2 = WordActionPicker(type = software_open.lower())
-elif software_open == "PowerPoint":
-    action_picker = PowerPointActionPicker(type = software_open.lower())
-else:
-    raise Exception("Attempted to open a non supported software")
-
-gesture = "Gesture1"
-input_type = "gesture"
-action = action_picker.map_input_to_action(gesture, type=input_type)
-print(f"The action taken for gesture : {gesture} of type {input_type} is {action}")
-
-if id(action_picker) == id(action_picker2):
-    print("Word is aplying Singleton")
-else:
-    print("No successful singleton")"""
