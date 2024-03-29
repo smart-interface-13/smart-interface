@@ -1,6 +1,9 @@
 from vosk import Model, KaldiRecognizer
 import pyaudio
 import json
+from src.utils import GestureLogger
+
+logger = GestureLogger("logger1")
 
 #model_path = "vosk-model-es-0.42"
 
@@ -48,7 +51,7 @@ class AudioTranscriber(object):
                         input=True, 
                         frames_per_buffer=8192)
         stream.start_stream()
-        print("Start audio capture")
+        logger.info("Start audio capture")
         
         while True:
             data = stream.read(8192)
@@ -62,7 +65,7 @@ class AudioTranscriber(object):
                                                                             ops=ops)
                 out = self.action_picker.execute_action(action_sequence)
                 if out == "close":
-                    print("Saliendo de modo comandos de voz")
+                    logger.info("Saliendo de modo comandos de voz")
                     return "gesture_mode"
                 elif out == "exit":
                     return out
@@ -77,5 +80,6 @@ class AudioTranscriber(object):
             str: Transcription
         """
         if result.get('text') :
-            print("Texto transrito:", result['text'])
+            text = result['text']
+            logger.info(f"Texto transrito: {text}")
         return result["text"]

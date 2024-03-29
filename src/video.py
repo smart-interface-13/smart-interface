@@ -3,6 +3,9 @@ import os
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
+from src.utils import GestureLogger
+
+logger = GestureLogger("logger1")
 
 class VideoCapturer(object):
 
@@ -38,7 +41,7 @@ class VideoCapturer(object):
             recognition_result = self.recognizer.recognize(rgb_frame)
             out = self._recognize_gesture(frame, recognition_result, actions, tool, ops)
             if out == "close":
-                print("Saliendo de modo reconocimiento de gestos")
+                logger.info("Saliendo de modo reconocimiento de gestos")
                 return "gesture_mode"
             elif out == "exit":
                 return "exit"
@@ -66,7 +69,7 @@ class VideoCapturer(object):
             (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
             action = top_gesture.category_name
-            print(f"Gesto reconocido : {action}")
+            logger.info(f"Gesto reconocido : {action}")
             action = self.action_picker.map_input_to_action(action, "gesture")
             action_sequence = self.action_picker.get_action_sequence(action=action,
                                                                         actions=actions,

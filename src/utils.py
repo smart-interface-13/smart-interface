@@ -1,6 +1,45 @@
 import json
 import os
 import sys
+import logging
+from logging.handlers import RotatingFileHandler
+from cryptography.fernet import Fernet
+
+def singleton(cls):
+    instances = {}
+    def get_instance(*args, **kwargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+    return get_instance
+
+@singleton
+class GestureLogger():
+
+    def __init__(self, name : str, level = logging.INFO) -> None:
+        self.logger = logging.getLogger(name)
+        self.logger.setLevel(level)
+        key = Fernet.generate_key()
+        self.cipher = Fernet(key)
+
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(formatter)
+        self.logger.addHandler(console_handler)
+
+        file_handler = RotatingFileHandler(os.path.join('usr','app.log'), maxBytes=10000, backupCount=5)
+        file_handler.setFormatter(formatter)
+        self.logger.addHandler(file_handler)
+
+    def debug(self, message):
+        message = self.cipher.encrypt(bytes(message, 'utf-8'))
+        self.logger.debug(message)
+
+    def info(self, message):
+        message = self.cipher.encrypt(bytes(message, 'utf-8'))
+        self.logger.info(message)
+    
 
 class ActionDictBuilder(object):
 
