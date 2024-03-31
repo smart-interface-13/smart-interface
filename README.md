@@ -10,6 +10,7 @@ El principal objetivo de este trabajo es el desarrollo de un prototipo funcional
 1. Sistema Operativo: MacOS Ventura 13.0 o Windows 10/11
 2. Python 3.9
 3. PIP version 3
+4. Permisos de acceso a micrófono, cámara y al sistema de archivos.
 
 
 ## Instalación
@@ -33,3 +34,5 @@ python3 main_flow.py
 ## Notas especiales
 
 Siempre que el programa se ejecuta el modo default es con comando de voz, es necesario cambiar mediante comando al modo de reconocimiento gestual si se requiere.
+
+**Ocasionalmente, sobre todo al ser ejecutado por primera vez, el sistema operativo puede solicitar permisos de acceso al micrófono, cámara y al sistema de archivos. Todos los permisos son requeridos para el funcionamiento correcto del software.**
