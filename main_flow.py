@@ -1,19 +1,13 @@
 """This file contains the main loop to run the prototype
 """
 
-import cv2
-from src.action import WordActionPicker, PowerPointActionPicker
+from src.action import WordActionPicker
 from src.video import VideoCapturer
 from src.voice import AudioTranscriber
 from src.utils import ActionDictBuilder
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import os
-import keyboard
-import pyautogui
-import time
-import json
-
 
 # Get actions dictionary
 actions_path = ["config", "key-commands.json"]
@@ -26,7 +20,7 @@ voice_action_map = adb.get_gesture_action_map(tools=["text_processor"], type=1)
 print(voice_action_map)
 
 # Initialization of models
-base_options = python.BaseOptions(model_asset_path=os.path.join(os.getcwd(),"models", "gesture_recognizer.task"))
+base_options = python.BaseOptions(model_asset_path=os.path.join(os.getcwd(),"src", "modelo3", "data_model3.task"))
 options = vision.GestureRecognizerOptions(base_options=base_options)
 gesture_recognizer = vision.GestureRecognizer.create_from_options(options)
 audio_model_path = os.path.join(os.getcwd(), "models", "vosk-model-es-0.42")
