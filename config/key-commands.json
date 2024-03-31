@@ -93,7 +93,7 @@
                 "1hotkey" : ["command", "+"]
             },
             "sequence_windows" : {
-                "1hotkey" : ["ctrl", "capslock", ">"]
+                "1hotkey" : ["ctrl", "capslock", "shift", ">"]
             }
         },
         "change_size_minus" : {
@@ -106,7 +106,7 @@
                 "1hotkey" : ["command", "-"]
             },
             "sequence_windows" : {
-                "1hotkey" : ["ctrl", "capslock", "<"]
+                "1hotkey" : ["ctrl", "capslock", "shift", "<"]
             }
         },
         "undo_action" : {
