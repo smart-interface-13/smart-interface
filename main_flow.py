@@ -1,19 +1,13 @@
 """This file contains the main loop to run the prototype
 """
 
-import cv2
-from src.action import WordActionPicker, PowerPointActionPicker
+from src.action import WordActionPicker
 from src.video import VideoCapturer
 from src.voice import AudioTranscriber
 from src.utils import ActionDictBuilder
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import os
-import keyboard
-import pyautogui
-import time
-import json
-
 
 # Get actions dictionary
 actions_path = ["config", "key-commands.json"]
