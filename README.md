@@ -21,10 +21,15 @@ git clone https://github.com/smart-interface-13/smart-interface.git
 cd smart-interface
 ```
 
-Posteriormente se debe crear un entorno virtual e instalar los requerimientos de librerías de Python
+Posteriormente se debe crear un entorno virtual e instalar los requerimientos de librerías de Python y ejecutar el flujo principal
 
 ```
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
+python3 main_flow.py
 ```
+
+## Notas especiales
+
+Siempre que el programa se ejecuta el modo default es con comando de voz, es necesario cambiar mediante comando al modo de reconocimiento gestual si se requiere.
