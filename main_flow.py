@@ -20,7 +20,7 @@ voice_action_map = adb.get_gesture_action_map(tools=["text_processor"], type=1)
 print(voice_action_map)
 
 # Initialization of models
-base_options = python.BaseOptions(model_asset_path=os.path.join(os.getcwd(),"models", "data_model3.task"))
+base_options = python.BaseOptions(model_asset_path=os.path.join(os.getcwd(),"models", "data_model4.task"))
 options = vision.GestureRecognizerOptions(base_options=base_options)
 gesture_recognizer = vision.GestureRecognizer.create_from_options(options)
 audio_model_path = os.path.join(os.getcwd(), "models", "vosk-model-small-es-0.42")
