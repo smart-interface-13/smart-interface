@@ -2,7 +2,7 @@
     "text_processor" : {
         "exit" : {
             "action" : "exit_mode",
-            "triggers" : ["Victory", "cambiar modo"],
+            "triggers" : ["five", "cambiar modo"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command closes the current input method",
             "prerequisite" : "",
@@ -85,7 +85,7 @@
         },
         "change_size_plus" : {
             "action" : "change_size_plus",
-            "triggers" : ["change_size_plus", "aumentar tamaño"],
+            "triggers" : ["seis", "aumentar tamaño"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command alters the size of a text to increase it",
             "prerequisite" : "selected",
@@ -111,7 +111,7 @@
         },
         "undo_action" : {
             "action" : "undo_action",
-            "triggers" : ["undo_action", "deshacer"],
+            "triggers" : ["nine", "deshacer"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command cancels the last action",
             "prerequisite" : "",
@@ -124,7 +124,7 @@
         },
         "delete_text" : {
             "action" : "delete_text",
-            "triggers" : ["delete_text", "borrar"],
+            "triggers" : ["cuatro", "borrar"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command deletes the selected text",
             "prerequisite" : "selected",
@@ -190,7 +190,7 @@
         },
         "advance_slide" : {
             "action" : "advance_slide",
-            "triggers" : ["Thumb_Down", "siguiente"],
+            "triggers" : ["one", "siguiente"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command triggers moving to the next slide",
             "prerequisite" : "",
@@ -203,7 +203,7 @@
         },
         "return_slide" : {
             "action" : "return_slide",
-            "triggers" : ["", "anterior"],
+            "triggers" : ["dos", "anterior"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command triggers moving to the last slide",
             "prerequisite" : "",
@@ -216,7 +216,7 @@
         },
         "play_slide" : {
             "action" : "play_slide",
-            "triggers" : ["", "iniciar"],
+            "triggers" : ["cero", "iniciar"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command starts the slide presentation",
             "prerequisite" : "",
@@ -268,7 +268,7 @@
         },
         "stop_presentation" : {
             "action" : "stop_presentation",
-            "triggers" : ["", "salir"],
+            "triggers" : ["tres", "salir"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command finishes the slide presentation",
             "prerequisite" : "",

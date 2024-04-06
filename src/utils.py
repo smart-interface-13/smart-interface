@@ -33,11 +33,11 @@ class GestureLogger():
         self.logger.addHandler(file_handler)
 
     def debug(self, message):
-        message = self.cipher.encrypt(bytes(message, 'utf-8'))
+        #message = self.cipher.encrypt(bytes(message, 'utf-8'))
         self.logger.debug(message)
 
     def info(self, message):
-        message = self.cipher.encrypt(bytes(message, 'utf-8'))
+        #message = self.cipher.encrypt(bytes(message, 'utf-8'))
         self.logger.info(message)
     
 
