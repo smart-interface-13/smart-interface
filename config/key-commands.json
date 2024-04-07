@@ -183,12 +183,12 @@
             "sequence_macos" : {
                 "1press" : "a",
                 "2hotkey" : ["command", "space"],
-                "3typewrite" : "nuitestslides",
+                "3typewrite" : "nuislides",
                 "4press" : "enter"
             },
             "sequence_windows" : {
                 "1press" : "win",
-                "2typewrite" : "nuitestslides",
+                "2typewrite" : "nuislides",
                 "3press" : "enter"
             }
         },
