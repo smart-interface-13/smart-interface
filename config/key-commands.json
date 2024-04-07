@@ -46,7 +46,7 @@
         },
         "save_document" : {
             "action" : "save_document",
-            "triggers" : ["save_document", "guardar documento"],
+            "triggers" : ["save_document", "guardar"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command saves a document",
             "prerequisite" : "",
@@ -202,7 +202,7 @@
                 "1press" : "pagedown"
             },
             "sequence_windows" : {
-                "1press" : "right"
+                "1press" : "down"
             }
         },
         "return_slide" : {
@@ -215,7 +215,7 @@
                 "1press" : "pageup"
             },
             "sequence_windows" : {
-                "1press" : "left"
+                "1press" : "up"
             }
         },
         "play_slide" : {
