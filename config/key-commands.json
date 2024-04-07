@@ -85,7 +85,7 @@
         },
         "change_size_plus" : {
             "action" : "change_size_plus",
-            "triggers" : ["seis", "aumentar tamaño"],
+            "triggers" : ["seis", "aumentar"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command alters the size of a text to increase it",
             "prerequisite" : "selected",
@@ -98,7 +98,7 @@
         },
         "change_size_minus" : {
             "action" : "change_size_minus",
-            "triggers" : ["change_size_minus", "disminuir tamaño"],
+            "triggers" : ["change_size_minus", "disminuir"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command alters the size of a text to decrease it",
             "prerequisite" : "selected",
@@ -163,7 +163,7 @@
         },
         "deselect" : {
             "action" : "deselect",
-            "triggers" : ["deselect", "cancelar selección"],
+            "triggers" : ["deselect", "cancelar"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command selects text",
             "prerequisite" : "selected",
@@ -176,7 +176,7 @@
         },
         "open_presentation" : {
             "action" : "open_presentation",
-            "triggers" : ["open_presentation", "abrir presentación"],
+            "triggers" : ["open_presentation", "abrir diapositivas"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command opens a KeyNote or PowerPoint document",
             "prerequisite" : "",
