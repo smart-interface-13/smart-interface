@@ -245,7 +245,7 @@
         },
         "current_slide" : {
             "action" : "current_slide",
-            "triggers" : ["", "actual"],
+            "triggers" : ["current_slide", "actual"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command starts at the actual presentation slide",
             "prerequisite" : "",
