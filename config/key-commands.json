@@ -148,6 +148,18 @@
                 "1hotkey" : ["alt", "`"]
             }
         },
+        "stop_write" : {
+            "action" : "stop_write",
+            "triggers" : ["stop_write", "detener"],
+            "trigger_types" : ["gesture", "voice"],
+            "description" : "This command stops writing function",
+            "prerequisite" : "",
+            "sequence_macos" : {
+            },
+            "sequence_windows" : {
+                "1hotkey" : ["alt", "`"]
+            }
+        },
         "select" : {
             "action" : "select",
             "triggers" : ["select", "seleccionar"],
@@ -246,7 +258,7 @@
         },
         "white_slide" : {
             "action" : "white_slide",
-            "triggers" : ["", "blanco"],
+            "triggers" : ["white_slide", "blanco"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command sets screen to a blank white slide",
             "prerequisite" : "",
@@ -259,7 +271,7 @@
         },
         "dark_slide" : {
             "action" : "dark_slide",
-            "triggers" : ["", "negro"],
+            "triggers" : ["dark_slide", "negro"],
             "trigger_types" : ["gesture", "voice"],
             "description" : "This command sets screen to a blank dark slide",
             "prerequisite" : "",
