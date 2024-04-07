@@ -36,3 +36,12 @@ python3 main_flow.py
 Siempre que el programa se ejecuta el modo default es con comando de voz, es necesario cambiar mediante comando al modo de reconocimiento gestual si se requiere.
 
 **Ocasionalmente, sobre todo al ser ejecutado por primera vez, el sistema operativo puede solicitar permisos de acceso al micrófono, cámara y al sistema de archivos. Todos los permisos son requeridos para el funcionamiento correcto del software.**
+
+## Condiciones del entorno físico
+
+Para garantizar una óptima funcionalidad del proyecto, se requieren ciertas condiciones en el entorno físico:
+1. Iluminación adecuada: Una iluminación insuficiente puede dificultar la detección de gestos y expresiones faciales por parte de la cámara web, lo que afectaría la precisión del reconocimiento.
+2. Espacio libre: Se necesita un espacio despejado y suficiente para permitir movimientos gestuales sin obstrucciones. Un área de trabajo amplia y libre de obstáculos facilitará la interacción natural del usuario con la interfaz.
+3. Posicionamiento de la cámara web y micrófono: La cámara web y el micrófono deben estar ubicados estratégicamente para capturar con precisión los gestos y comandos de voz del usuario. Se recomienda una posición elevada y centrada para la cámara web, y un micrófono con un alcance adecuado para captar la voz del usuario.
+4. Condiciones acústicas: Un entorno con niveles de ruido controlados ayudará a mejorar la precisión del reconocimiento de voz. Reducir al mínimo los ruidos externos y reverberaciones contribuirá a una mejor interpretación de los comandos de voz.
+5. Superficie de trabajo adecuada: Una superficie de trabajo plana y estable es esencial para evitar movimientos aleatorios que podrían causar ruido tanto acústico como visual.
