@@ -186,7 +186,11 @@
                 "3typewrite" : "nuitestslides",
                 "4press" : "enter"
             },
-            "sequence_windows" : {}
+            "sequence_windows" : {
+                "1press" : "win",
+                "2typewrite" : "nuitestslides",
+                "3press" : "enter"
+            }
         },
         "advance_slide" : {
             "action" : "advance_slide",

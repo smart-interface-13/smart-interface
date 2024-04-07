@@ -10,3 +10,12 @@
 2024-03-31 09:07:10,633 - logger1 - INFO - b'gAAAAABmCYou0AM0DivRYCeCtCCDZWtfditfa1tAefbptH05f6bnLs1qvygrb5vNcqo7-rLtNGwmKj82IybADr2KtQi2UThtwGDi1RPVntRJpa0CBYrCuSk='
 2024-03-31 09:07:20,363 - logger1 - INFO - b'gAAAAABmCYo4K77By_XEwcVZG8ijP162JrXau73c66bRQUY3V9vSufu10PEOStV0NYphKZOSTExjrhOE3gAc1rgloXTF4wWU55UDBeX2F9Zj6Z4VJGBPi4RXrFoMa5eeoal1jguTM20Gz1eiBZ7joXFxAEw-ivtjgIwMgEmD611eugtfDJsj7v2VY9PMPizoFsFAciJfx9FBg11U3cLqUg2ORyhYwjeeGCXE-Zm3v9OFEIyfMbaTPDa4rwU_a1sbKJHOpIe7nhjb'
 2024-03-31 09:07:20,365 - logger1 - INFO - b'gAAAAABmCYo4LHifjGdW3KhV5EABHkcby6oskjizmbA3Eti_qoPBZIFhk4RAb4-uqWGXKFoRdIDMeszRPDYApR3gOS0KlUmmDQZWEkYHWPdw9jLSUzx7d3E='
+2024-04-07 08:24:14,111 - logger1 - INFO - Start audio capture
+2024-04-07 08:24:19,765 - logger1 - INFO - Comando de voz no reconocido
+2024-04-07 08:24:24,878 - logger1 - INFO - Comando de voz no reconocido
+2024-04-07 08:24:31,029 - logger1 - INFO - Texto transrito: abrir documento
+2024-04-07 08:24:31,030 - logger1 - INFO - Comando de voz reconocido open_document
+2024-04-07 08:24:31,031 - logger1 - INFO - presswin
+2024-04-07 08:24:31,256 - logger1 - INFO - typewritenuitest
+2024-04-07 08:24:31,487 - logger1 - INFO - pressenter
+2024-04-07 08:24:36,173 - logger1 - INFO - Comando de voz no reconocido
