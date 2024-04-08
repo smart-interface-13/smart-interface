@@ -31,6 +31,23 @@ pip3 install -r requirements.txt
 python3 main_flow.py
 ```
 
+## Comandos y gestos soportados
+
+Para utilizar la siguiente herramienta, los siguientes comandos son aceptados tanto para sistema operativo Windows (con Word y PowerPoint) y en MacOS (con Page y KeyNote).
+
+![Mi imagen local](docs/1.png "Una imagen local")
+![Mi imagen local](docs/2.png "Una imagen local")
+![Mi imagen local](docs/3.png "Una imagen local")
+
+### Comandos de voz (adicionales) soportados
+
+![Mi imagen local](docs/4.png "Una imagen local")
+![Mi imagen local](docs/5.png "Una imagen local")
+![Mi imagen local](docs/6.png "Una imagen local")
+
+
+
+
 ## Notas especiales
 
 Siempre que el programa se ejecuta el modo default es con comando de voz, es necesario cambiar mediante comando al modo de reconocimiento gestual si se requiere.
